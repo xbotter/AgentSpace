@@ -1,0 +1,9 @@
+<Project>
+ <PropertyGroup>
+   <LangVersion>10.0</LangVersion>
+   <OutputPath>..\..\packages</OutputPath>
+   <BotSharpVersion>0.15.1</BotSharpVersion>
+   <BotSharpSrcPath>..\..\..\..\BotSharp\src</BotSharpSrcPath>
+   <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+ </PropertyGroup>
+</Project>

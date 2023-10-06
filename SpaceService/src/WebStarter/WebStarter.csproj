@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>363cc4ac-aff8-4988-b550-a5be77793790</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(SolutionName)==SpaceService">
+    <PackageReference Include="BotSharp.OpenAPI" Version="$(BotSharpVersion)" />
+    <PackageReference Include="BotSharp.Plugin.AzureOpenAI" Version="$(BotSharpVersion)" />
+    <PackageReference Include="BotSharp.Plugin.PizzaBot" Version="$(BotSharpVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="data\**" />
+    <Content Remove="data\**" />
+    <EmbeddedResource Remove="data\**" />
+    <None Remove="data\**" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="LLamaSharp.Backend.Cuda11" Version="0.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
+    <PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.11.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="$(SolutionName)==ServiceDebug">
+    <ProjectReference Include="$(BotSharpSrcPath)\Infrastructure\BotSharp.Core\BotSharp.Core.csproj" />
+    <ProjectReference Include="$(BotSharpSrcPath)\Infrastructure\BotSharp.OpenAPI\BotSharp.OpenAPI.csproj" />
+    <ProjectReference Include="$(BotSharpSrcPath)\Plugins\BotSharp.Plugin.AzureOpenAI\BotSharp.Plugin.AzureOpenAI.csproj" />
+    <ProjectReference Include="$(BotSharpSrcPath)\..\tests\BotSharp.Plugin.PizzaBot\BotSharp.Plugin.PizzaBot.csproj" />
+  </ItemGroup>
+  
+</Project>
