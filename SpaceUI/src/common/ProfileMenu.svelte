@@ -1,22 +1,11 @@
 <script>
 	import { _ } from 'svelte-i18n';
 	import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'sveltestrap';
-	import { user } from '../helpers/store';
-	import { auth } from '../helpers/firebase';
 	import { navigate } from 'svelte-routing';
 
 	const handleLogOut = () => {
-		auth.signOut().then(
-			function () {
-				// Sign-out successful.
-				user.set({ ...$user, loggedIn: false });
-				navigate('/login');
-			},
-			function (error) {
-				// An error happened.
-				console.warn('error on logout', error.message);
-			}
-		);
+		// Sign-out successful.
+		navigate('/login');
 	};
 </script>
 

@@ -1,7 +1,5 @@
 <script>
-	import { auth } from '../../helpers/firebase';
 	import { navigate } from 'svelte-routing';
-	import { user } from '../../helpers/store.js';
     import { Container, Row, Col, Card, CardBody,Button} from 'sveltestrap';
     import { Link } from 'svelte-routing';
 
@@ -11,16 +9,7 @@
 			elements: { email, password },
 		},
 	}) => {
-		auth.createUserWithEmailAndPassword(email.value, password.value).catch((error) => alert(error.message));
-		let firebaseUser = auth.currentUser;
-
-		if (firebaseUser) {
-			let { email } = firebaseUser;
-			
-			user.set({ ...$user, loggedIn: true, email });
-			
-			navigate('/');
-		}
+		navigate('/');
 	};
 
 </script>

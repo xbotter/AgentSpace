@@ -1,6 +1,6 @@
 <script>
 	import { navigate } from 'svelte-routing';
-	import { user } from '../../helpers/store.js';
+	import { getToken } from '../../services/auth-service.js'
 	import {
     Row,
     Col,
@@ -19,40 +19,7 @@
 
 	// Destructuring to obtain email and password from form via Event
 	const handleLoginForm = async () => {
-		const credentials = btoa(`${email}:${password}`);
-		const headers = {
-			Authorization: `Basic ${credentials}`,
-		};
-
-		const res = await fetch('http://localhost:5050/token', {
-			method: 'POST',
-			headers: headers,
-		})
-		.then(result => {
-			if (result.ok) {
-				user.set({ ...$user, loggedIn: true, email });
-				navigate('/');
-			} else {
-				alert(result.statusText);
-			}
-		})
-		.catch(error => alert(error.message));
-		
-		/*auth.signInWithEmailAndPassword(email, password)
-			.then(function (result) {
-				let firebaseUser = auth.currentUser;
-
-				if (firebaseUser) {
-
-					let { email } = firebaseUser;
-
-					user.set({ ...$user, loggedIn: true, email });
-
-					navigate('/');
-				}
-				
-			})
-			.catch((error) => alert(error.message));*/
+		await getToken(email, password, _ => navigate('/'));
 	};
 </script>
 
