@@ -5,22 +5,46 @@
     import { Container, Row, Col, Card, CardBody,Button} from 'sveltestrap';
     import { Link } from 'svelte-routing';
 
-	// Destructuring to obtain email and password from form via Event
-	const handleRegisterForm = ({
-		target: {
-			elements: { email, password },
-		},
-	}) => {
-		auth.createUserWithEmailAndPassword(email.value, password.value).catch((error) => alert(error.message));
-		let firebaseUser = auth.currentUser;
+	let email = 'botsharp@gmail.com';
+	let password = '123456';
+	let firstName = 'Haiping';
+	let lastName = 'Chen';
 
-		if (firebaseUser) {
-			let { email } = firebaseUser;
+	// Destructuring to obtain email and password from form via Event
+	const handleRegisterForm = async () => {
+		
+		let data = JSON.stringify({
+					firstName,
+					lastName,
+					email,
+					password
+				});
+		await fetch('http://localhost:5050/user', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: data
+		})
+		.then(result => {
+			if (result.ok) {
+				user.set({ ...$user, loggedIn: true, email });
+				navigate('/');
+			} else {
+				alert(result.statusText);
+			}
+		})
+		.catch(error => alert(error.message));
+		// auth.createUserWithEmailAndPassword(email.value, password.value).catch((error) => alert(error.message));
+		// let firebaseUser = auth.currentUser;
+
+		// if (firebaseUser) {
+		// 	let { email } = firebaseUser;
 			
-			user.set({ ...$user, loggedIn: true, email });
+		// 	user.set({ ...$user, loggedIn: true, email });
 			
-			navigate('/');
-		}
+		// 	navigate('/');
+		// }
 	};
 
 </script>
@@ -72,20 +96,35 @@
 						class="form-control"
 						id="email"
 						placeholder="Enter email"
+						bind:value={email}
 					/>
 					<div class="invalid-feedback">Please Enter Email</div>
 				  </div>
   
 				  <div class="mb-3">
-					<label for="username" class="form-label">Username</label>
+					<label for="firstName" class="form-label">FirstName</label>
 					<input
 						type="text"
-						name="Username"
+						name="firstName"
 						class="form-control"
-						id="username"
-						placeholder="Enter username"
+						id="firstName"
+						placeholder="Enter firstName"
+						bind:value={firstName}
 					/>
-					<div class="invalid-feedback">Please Enter Username</div>
+					<div class="invalid-feedback">Please Enter firstName</div>
+				  </div>
+
+				  <div class="mb-3">
+					<label for="lastName" class="form-label">LastName</label>
+					<input
+						type="text"
+						name="lastName"
+						class="form-control"
+						id="lastName"
+						placeholder="Enter lastName"
+						bind:value={lastName}
+					/>
+					<div class="invalid-feedback">Please Enter lastName</div>
 				  </div>
   
 				  <div class="mb-3">
@@ -96,13 +135,13 @@
 						class="form-control"
 						id="password"
 						placeholder="Enter password"
+						bind:value={password}
 					/>
 					<div class="invalid-feedback">Please Enter Password</div>
 				  </div>
   
 				  <div class="mt-4 d-grid">
-					<button class="btn btn-primary w-md waves-effect waves-light" type="submit"
-            >Register</button>
+					<button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
 				  </div>
   
 				  <div class="mt-4 text-center">
