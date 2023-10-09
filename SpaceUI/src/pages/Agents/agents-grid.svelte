@@ -3,15 +3,21 @@
   //Import Breadcrumb
   import Breadcrumb from "../../common/Breadcrumb.svelte";
   //Import Cards
-  import CardProject from "./card-project.svelte";
-  import data from "../../common/data/projects";
+  import CardAgent from "./card-agent.svelte";
+
+  import { onMount } from "svelte";
+  import { getAgents } from "../../services/agent-service";
+  let data = { agents: [] };
+  onMount(async () => {
+    data.agents = await getAgents();
+  });
 </script>
 
 <div class="page-content">
   <Container fluid>
-    <Breadcrumb title="Projects" breadcrumbItem="Projects Grid" />
+    <Breadcrumb title="Agents" breadcrumbItem="Agents Grid" />
     <Row>
-      <CardProject projects={data.projects} />
+      <CardAgent agents={data.agents} />
     </Row>
 
     <Row>
@@ -24,20 +30,11 @@
               ><i class="mdi mdi-chevron-left" /></a
             >
           </li>
-          <li class="page-item">
+          <li class="page-item active">
             <a href={"#"} class="page-link">1</a>
           </li>
-          <li class="page-item active">
+          <li class="page-item">
             <a href={"#"} class="page-link">2</a>
-          </li>
-          <li class="page-item">
-            <a href={"#"} class="page-link">3</a>
-          </li>
-          <li class="page-item">
-            <a href={"#"} class="page-link">4</a>
-          </li>
-          <li class="page-item">
-            <a href={"#"} class="page-link">5</a>
           </li>
           <li class="page-item">
             <a href={"#"} class="page-link"

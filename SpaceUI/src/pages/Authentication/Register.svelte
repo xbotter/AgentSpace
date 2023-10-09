@@ -1,7 +1,5 @@
 <script>
-	import { auth } from '../../helpers/firebase';
 	import { navigate } from 'svelte-routing';
-	import { user } from '../../helpers/store.js';
     import { Container, Row, Col, Card, CardBody,Button} from 'sveltestrap';
     import { Link } from 'svelte-routing';
 
