@@ -2,7 +2,7 @@
   import { Col, Container, Row } from "sveltestrap";
   import Breadcrumb from "../../../common/Breadcrumb.svelte";
 
-  import ProjectDetail from "./projectDetail.svelte";
+  import AgentDetail from "./agentDetail.svelte";
   import TeamMembers from "./teamMembers.svelte";
   import OverviewChart from "./overviewChart.svelte";
   import data from "../../../common/data/projects";
@@ -15,7 +15,7 @@
     <Breadcrumb title="Agent" breadcrumbItem="Agent Overview" />
     <Row>
       <Col lg="8">
-        <ProjectDetail project={data.projects[0]} />
+        <AgentDetail project={data.projects[0]} />
       </Col>
 
       <Col lg="4">
