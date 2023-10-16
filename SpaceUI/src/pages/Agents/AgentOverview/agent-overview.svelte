@@ -8,6 +8,17 @@
   import data from "../../../common/data/projects";
   import AttachedFiles from "./attachedFiles.svelte";
   import Comments from "./comments.svelte";
+  import { identity, parseClassNames } from "svelte-fullcalendar";
+  import { getAgent } from "../../../services/agent-service";
+  let agent = { };
+
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    let id = window.location.pathname.split('/')[2];
+    agent = await getAgent(id);
+  });
+
+  
 </script>
 
 <div class="page-content">
@@ -15,7 +26,7 @@
     <Breadcrumb title="Agent" breadcrumbItem="Agent Overview" />
     <Row>
       <Col lg="8">
-        <AgentDetail project={data.projects[0]} />
+        <AgentDetail project={data.projects[0]} agent={agent} />
       </Col>
 
       <Col lg="4">
