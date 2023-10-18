@@ -21,5 +21,29 @@ export async function getToken(email, password, succeed) {
         userStore.set({ ...user, loggedIn: true, email, token: result.access_token });
         succeed();
     })
-    .catch(error => alert(error.message));
+        .catch(error => alert(error.message));
+}
+
+export async function register(firstName, lastName, email, password, succeed) {
+    let data = JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        password
+    });
+    await fetch(config.kit.endpoints.spaceServiceUrl + '/user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    })
+        .then(result => {
+            if (result.ok) {
+                succeed();
+            } else {
+                alert(result.statusText);
+            }
+        })
+        .catch(error => alert(error.message));
 }

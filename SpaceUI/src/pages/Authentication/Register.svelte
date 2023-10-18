@@ -2,14 +2,15 @@
 	import { navigate } from 'svelte-routing';
     import { Container, Row, Col, Card, CardBody,Button} from 'sveltestrap';
     import { Link } from 'svelte-routing';
+	import { register } from '../../services/auth-service.js'
 
-	// Destructuring to obtain email and password from form via Event
-	const handleRegisterForm = ({
-		target: {
-			elements: { email, password },
-		},
-	}) => {
-		navigate('/');
+	let email = 'botsharp@gmail.com';
+	let password = '123456';
+	let firstName = 'Haiping';
+	let lastName = 'Chen';
+
+	const handleRegisterForm = async () => {
+		register(firstName,lastName,email,password, _ => navigate('/login') );
 	};
 
 </script>
@@ -61,20 +62,35 @@
 						class="form-control"
 						id="email"
 						placeholder="Enter email"
+						bind:value={email}
 					/>
 					<div class="invalid-feedback">Please Enter Email</div>
 				  </div>
   
 				  <div class="mb-3">
-					<label for="username" class="form-label">Username</label>
+					<label for="firstName" class="form-label">FirstName</label>
 					<input
 						type="text"
-						name="Username"
+						name="firstName"
 						class="form-control"
-						id="username"
-						placeholder="Enter username"
+						id="firstName"
+						placeholder="Enter firstName"
+						bind:value={firstName}
 					/>
-					<div class="invalid-feedback">Please Enter Username</div>
+					<div class="invalid-feedback">Please Enter firstName</div>
+				  </div>
+
+				  <div class="mb-3">
+					<label for="lastName" class="form-label">LastName</label>
+					<input
+						type="text"
+						name="lastName"
+						class="form-control"
+						id="lastName"
+						placeholder="Enter lastName"
+						bind:value={lastName}
+					/>
+					<div class="invalid-feedback">Please Enter lastName</div>
 				  </div>
   
 				  <div class="mb-3">
@@ -85,13 +101,13 @@
 						class="form-control"
 						id="password"
 						placeholder="Enter password"
+						bind:value={password}
 					/>
 					<div class="invalid-feedback">Please Enter Password</div>
 				  </div>
   
 				  <div class="mt-4 d-grid">
-					<button class="btn btn-primary w-md waves-effect waves-light" type="submit"
-            >Register</button>
+					<button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
 				  </div>
   
 				  <div class="mt-4 text-center">
