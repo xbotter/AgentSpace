@@ -2,47 +2,15 @@
 	import { navigate } from 'svelte-routing';
     import { Container, Row, Col, Card, CardBody,Button} from 'sveltestrap';
     import { Link } from 'svelte-routing';
+	import { register } from '../../services/auth-service.js'
 
 	let email = 'botsharp@gmail.com';
 	let password = '123456';
 	let firstName = 'Haiping';
 	let lastName = 'Chen';
 
-	// Destructuring to obtain email and password from form via Event
 	const handleRegisterForm = async () => {
-		
-		let data = JSON.stringify({
-					firstName,
-					lastName,
-					email,
-					password
-				});
-		await fetch('http://localhost:5050/user', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: data
-		})
-		.then(result => {
-			if (result.ok) {
-				user.set({ ...$user, loggedIn: true, email });
-				navigate('/');
-			} else {
-				alert(result.statusText);
-			}
-		})
-		.catch(error => alert(error.message));
-		// auth.createUserWithEmailAndPassword(email.value, password.value).catch((error) => alert(error.message));
-		// let firebaseUser = auth.currentUser;
-
-		// if (firebaseUser) {
-		// 	let { email } = firebaseUser;
-			
-		// 	user.set({ ...$user, loggedIn: true, email });
-			
-		// 	navigate('/');
-		// }
+		register(firstName,lastName,email,password, _ => navigate('/login') );
 	};
 
 </script>
