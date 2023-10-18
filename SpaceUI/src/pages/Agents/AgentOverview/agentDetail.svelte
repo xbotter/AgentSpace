@@ -1,6 +1,7 @@
 <script>
   import { Card, CardBody, Col, Row } from "sveltestrap";
   export let project;
+  export let agent;
 </script>
 
 <Card>
@@ -13,15 +14,15 @@
       />
 
       <div class="flex-grow-1 overflow-hidden">
-        <h5 class="text-truncate font-size-15">{project.name}</h5>
-        <p class="text-muted">{project.description}</p>
+        <h5 class="text-truncate font-size-15">{agent.name}</h5>
+        <p class="text-muted">{agent.description}</p>
       </div>
     </div>
 
-    <h5 class="font-size-15 mt-4">Project Details :</h5>
+    <h5 class="font-size-15 mt-4">Agent Details :</h5>
 
     <p class="text-muted">
-      {project.projectDetails.description}
+      {agent.description}
     </p>
 
     <div class="text-muted mt-4">

@@ -1,6 +1,7 @@
 <script>
   import { Link } from "svelte-routing";
   import { Badge, Card, CardBody, Col } from "sveltestrap";
+  import { format } from "../../helpers/datetime"
   export let agents;
 </script>
 
@@ -19,41 +20,40 @@
 
           <div class="flex-grow-1 overflow-hidden">
             <h5 class="text-truncate font-size-15">
-              <Link to={`/projects-overview/${agent.id}`} class="text-dark">
+              <Link to={`/agent-overview/${agent.id}`} class="text-dark">
                 {agent.name}
               </Link>
             </h5>
             <p class="text-muted mb-4">{agent.description}</p>
 
-            <!--<div class="avatar-group">
-              {#each project.team as team}
-                {#if !team.img || team.img !== "Null"}
+            <div class="avatar-group">
+              {#if agent.functions && agent.functions.length > 0}
+                {#each agent.functions as fn}
                   <div class="avatar-group-item">
-                    <Link to="#" class="d-inline-block" id={"member" + team.id}>
+                    <Link to="#" class="d-inline-block" id={"member" + fn.name}>
                       <img
-                        src={team.img}
+                        src='../../assets/images/chatbots/function.png'
                         class="rounded-circle avatar-xs"
                         alt=""
                       />
                     </Link>
                   </div>
-                {:else}
-                  <div class="avatar-group-item">
-                    <Link to="#" class="d-inline-block" id={"member" + team.id}>
-                      <div class="avatar-xs">
-                        <span
-                          class={"avatar-title rounded-circle bg-" +
-                            team.color +
-                            " text-white font-size-16"}
-                        >
-                          {team.name}
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                {/if}
-              {/each}
-            </div>-->
+                {/each}
+              {:else}
+                <div class="avatar-group-item">
+                  <Link to="#" class="d-inline-block">
+                    <div class="avatar-xs">
+                      <span
+                        class={"avatar-title rounded-circle bg-" +
+                          'warning' +
+                          " text-white font-size-16"}
+                      >
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              {/if}
+            </div>
           </div>
         </div>
       </CardBody>
@@ -66,7 +66,7 @@
           {" "}
           <li class="list-inline-item me-3" id="dueDate">
             <i class="bx bx-calendar me-1" />
-            {agent.updatedDateTime}
+            {format(agent.updatedDateTime)}
           </li>
           {" "}
           <li class="list-inline-item me-3" id="comments">

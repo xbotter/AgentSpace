@@ -22,6 +22,7 @@ import Register from "../pages/Authentication/Register.svelte";
 // Dashboard
 import Dashboard from "../pages/Dashboard/index.svelte";
 
+// https://www.npmjs.com/package/svelte-routing
 const authProtectedRoutes = [
   { path: "/", component: Dashboard },     
   { path: "/index", component: Dashboard },
@@ -42,7 +43,7 @@ const authProtectedRoutes = [
 
   // Agents
   { path: "/agents-grid", component: AgentsGrid },
-  { path: "/agent-overview", component: AgentOverview },
+  { path: "/agent-overview/:id", component: AgentOverview },
   { path: "/agent-create", component: AgentCreate },
 ];
 
