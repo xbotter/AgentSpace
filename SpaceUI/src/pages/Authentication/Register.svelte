@@ -43,10 +43,10 @@
 				  <div class="avatar-md profile-user-wid mb-4">
 					<span class="avatar-title rounded-circle bg-light">
 					  <img
-						src="assets/images/logo.svg"
+						src="assets/images/logo.png"
 						alt=""
 						class="rounded-circle"
-						height="34"
+						height="65"
 					  />
 					</span>
 				  </div>

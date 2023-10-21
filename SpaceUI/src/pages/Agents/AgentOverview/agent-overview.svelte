@@ -3,22 +3,20 @@
   import Breadcrumb from "../../../common/Breadcrumb.svelte";
 
   import AgentDetail from "./agentDetail.svelte";
-  import TeamMembers from "./teamMembers.svelte";
+  import AgentFunctions from "./agentFunctions.svelte";
   import OverviewChart from "./overviewChart.svelte";
   import data from "../../../common/data/projects";
   import AttachedFiles from "./attachedFiles.svelte";
   import Comments from "./comments.svelte";
   import { identity, parseClassNames } from "svelte-fullcalendar";
   import { getAgent } from "../../../services/agent-service";
-  let agent = { };
+  let agent = { name: '', functions: [] };
 
   import { onMount } from 'svelte';
   onMount(async () => {
     let id = window.location.pathname.split('/')[2];
     agent = await getAgent(id);
   });
-
-  
 </script>
 
 <div class="page-content">
@@ -26,11 +24,11 @@
     <Breadcrumb title="Agent" breadcrumbItem="Agent Overview" />
     <Row>
       <Col lg="8">
-        <AgentDetail project={data.projects[0]} agent={agent} />
+        <AgentDetail agent={agent} />
       </Col>
 
       <Col lg="4">
-        <TeamMembers team={data.projects[0].team} />
+        <AgentFunctions functions={agent.functions} />
       </Col>
     </Row>
 

@@ -9,7 +9,7 @@ const tasks = [
         members: [
           {
             username: "",
-            userImg: "assets/images/users/avatar-2.jpg",
+            userImg: "assets/images/users/avatar-1.jpg",
           },
           {
             username: "",
@@ -132,7 +132,7 @@ const tasks = [
           },
           {
             username: "",
-            userImg: "assets/images/users/avatar-2.jpg",
+            userImg: "assets/images/users/avatar-1.jpg",
           },
         ],
         status: "Complete",

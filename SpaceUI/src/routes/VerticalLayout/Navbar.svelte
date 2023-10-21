@@ -121,12 +121,6 @@
             <li>
               <Link
                 class="side-nav-link-ref"
-                to="agent-overview"
-                key="t-p-overview">{$_("menuitems.agents.list.overview")}</Link>
-            </li>
-            <li>
-              <Link
-                class="side-nav-link-ref"
                 to="agent-create"
                 key="t-create-new">{$_("menuitems.agents.list.create")}</Link>
             </li>

@@ -14,7 +14,7 @@
             <span
               class="avatar-title rounded-circle bg-light text-danger font-size-16"
             >
-              <img src="../../assets/images/chatbots/online-chat-business.png" alt="" height="45" />
+              <img src="/assets/images/chatbots/online-chat-business.png" alt="" height="45" />
             </span>
           </div>
 

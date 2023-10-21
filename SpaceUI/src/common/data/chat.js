@@ -3,7 +3,7 @@ const chats = [
         id: 1,
         roomId: 1,
         status: "offline",
-        image: "assets/images/users/avatar-2.jpg",
+        image: "assets/images/users/avatar-1.jpg",
         name: "John Howard",
         penddingmsg : "",
         description: "Hey! there I'm available",
@@ -76,7 +76,7 @@ const messages = [
     {
       id: 1,
       roomId: 1,
-      image: 'assets/images/users/avatar-2.jpg',
+      image: 'assets/images/users/avatar-1.jpg',
       sender: "John Howard",
       message: "Good morning !",
       createdAt: "10.00",
@@ -92,7 +92,7 @@ const messages = [
     {
       id: 3,
       roomId: 1,
-      image: 'assets/images/users/avatar-2.jpg',
+      image: 'assets/images/users/avatar-1.jpg',
       sender: "John Howard",
       message: "Yeah everything is fine",
       createdAt: "10.04",
@@ -100,7 +100,7 @@ const messages = [
     {
       id: 4,
       roomId: 1,
-      image: 'assets/images/users/avatar-2.jpg',
+      image: 'assets/images/users/avatar-1.jpg',
       sender: "John Howard",
       message: "Next meeting tomorrow 10.00AM",
       createdAt: "10.04",
@@ -116,7 +116,7 @@ const messages = [
     {
         id: 6,
         roomId: 1,
-        image: 'assets/images/users/avatar-2.jpg',
+        image: 'assets/images/users/avatar-1.jpg',
         sender: "John Howard",
         message: "Ok Thanks!! Meet you very soon",
         createdAt: "10.07",

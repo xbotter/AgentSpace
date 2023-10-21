@@ -31,11 +31,11 @@
       <Col lg="12">
         <Card>
           <CardBody>
-            <CardTitle class="mb-4">Create New Project</CardTitle>
+            <CardTitle class="mb-4">Create New Agent</CardTitle>
             <form>
               <Row class="mb-4">
                 <Label for="projectname" class="col-form-label col-lg-2">
-                  Project Name
+                  Agent Name
                 </Label>
                 <Col lg="10">
                   <input
@@ -49,7 +49,7 @@
               </Row>
               <Row class="mb-4">
                 <Label for="projectdesc" class="col-form-label col-lg-2">
-                  Project Description
+                  Description
                 </Label>
                 <Col lg="10">
                   <textarea
@@ -62,7 +62,7 @@
               </Row>
 
               <Row class="mb-4">
-                <Label class="col-form-label col-lg-2">Project Date</Label>
+                <Label class="col-form-label col-lg-2">Start Date</Label>
                 <div class="col-lg-10">
                   <div
                     class="input-daterange input-group"

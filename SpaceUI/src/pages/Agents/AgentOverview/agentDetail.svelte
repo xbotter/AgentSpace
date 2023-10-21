@@ -1,6 +1,5 @@
 <script>
   import { Card, CardBody, Col, Row } from "sveltestrap";
-  export let project;
   export let agent;
 </script>
 
@@ -8,7 +7,7 @@
   <CardBody>
     <div class="d-flex">
       <img
-        src="assets/images/companies/img-1.png"
+        src="/assets/images/chatbots/online-chat-business.png"
         alt=""
         class="avatar-sm me-4"
       />
@@ -22,15 +21,15 @@
     <h5 class="font-size-15 mt-4">Agent Details :</h5>
 
     <p class="text-muted">
-      {agent.description}
+      {agent.instruction}
     </p>
 
     <div class="text-muted mt-4">
-      {#if project.projectDetails}
-        {#each project.projectDetails.points as point}
+      {#if agent.profiles}
+        {#each agent.profiles as profile}
           <p>
             <i class="mdi mdi-chevron-right text-primary me-1" />
-            {point}
+            {profile}
           </p>
         {/each}
       {/if}
@@ -40,18 +39,18 @@
       <Col sm="4" xs="6">
         <div class="mt-4">
           <h5 class="font-size-14">
-            <i class="bx bx-calendar me-1 text-primary" /> Start Date
+            <i class="bx bx-calendar me-1 text-primary" /> Created Date
           </h5>
-          <p class="text-muted mb-0">{project.startDate}</p>
+          <p class="text-muted mb-0">{agent.createdDateTime}</p>
         </div>
       </Col>
 
       <Col sm="4" xs="6">
         <div class="mt-4">
           <h5 class="font-size-14">
-            <i class="bx bx-calendar-check me-1 text-primary" /> Due Date
+            <i class="bx bx-calendar-check me-1 text-primary" /> Updated Date
           </h5>
-          <p class="text-muted mb-0">{project.dueDate}</p>
+          <p class="text-muted mb-0">{agent.updatedDateTime}</p>
         </div>
       </Col>
     </Row>
